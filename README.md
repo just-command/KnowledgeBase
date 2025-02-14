@@ -5,4 +5,5 @@
 ## Темы 
 
 1. [Задача, декомпозиция задачи](files/Task_Decompouse.md)
+2. [Текстовые форматы карт](files/Maps_Formats.md)
 
