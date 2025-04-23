@@ -42,7 +42,7 @@
 *AndroidManifest* - центральный элемент, который обязан быть в каждом приложении Android. AndroidManifest определяет структуру, функции и взаимодействие с системой.
 AnroidManifest управляет различными аспектами работы, а именно:
 1) Manifest Element содержит основную информацию о приложении, такую как его пакет (package) и версия. 
-```
+```Xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.viewapp"
     android:versionName="1.0"
@@ -53,7 +53,7 @@ AnroidManifest управляет различными аспектами раб
 </manifest>
 ```
 2) Uses-Permission Element указывает на необходимость разрешений для выполнения определенных функций приложения.
-```
+```Xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.viewapp">
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -77,7 +77,7 @@ AnroidManifest управляет различными аспектами раб
 
 - android:theme устанавливает тему приложения. Подробно темы будут рассмотрены далее, а пока достаточно знать, что тема определяет общий стиль приложения. Значение @style/Theme.ViewApp" берет тему "Theme.ViewApp" из каталога res/values/themes
 
-```
+```Xml
  <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -91,7 +91,7 @@ AnroidManifest управляет различными аспектами раб
     </application>
 ```
 4) Activity Element описывает активность, включая ее имя и фильтр намерений. Элемент intent-filter в MainActivity указывает, как данная activity будет использоваться. В частности, с помощью узла action android:name="android.intent.action.MAIN", что данная activity будет входной точкой в приложение и не должна получать какие-либо данные извне.
-```
+```Xml
 <activity android:name=".MainActivity">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
