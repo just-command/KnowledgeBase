@@ -39,6 +39,73 @@
 
 **AndroidManifest.xml** -- 
 
+*AndroidManifest* - центральный элемент, который обязан быть в каждом приложении Android. AndroidManifest определяет структуру, функции и взаимодействие с системой.
+AnroidManifest управляет различными аспектами работы, а именно:
+1) Manifest Element содержит основную информацию о приложении, такую как его пакет (package) и версия. 
+```Xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.viewapp"
+    android:versionName="1.0"
+    android:versionCode="1">
+     
+<!-- остальное содержимое-->
+ 
+</manifest>
+```
+2) Uses-Permission Element указывает на необходимость разрешений для выполнения определенных функций приложения.
+```Xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.viewapp">
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CAMERA" android:maxSdkVersion="30" />
+<!-- остальное содержимое-->
+ 
+</manifest>
+```
+3) Application Element определяет параметры приложения, такие как иконка, метки и темы.
+По умолчанию применяются следующие атрибуты:
+
+- android:allowBackup указывает, будет ли для приложения создаваться резервная копия. Значение android:allowBackup="true" разрешает создание резервной копии.
+
+- android:icon устанавливает иконку приложения. При значении android:icon="@mipmap/ic_launcher" иконка приложения берется из каталога res/mipmap
+
+- android:roundIcon устанавливает круглую иконку приложения. Также берется из каталога res/mipmap
+
+- android:label задает название приложение, которое будет отображаться на мобильном устройстве в списке приложений и в заголовке. В данном случае оно хранится в строковых ресурсах - android:label="@string/app_name".
+
+- android:supportsRtl указывает, могут ли использоваться различные RTL API - специальные API для работы с правосторонней ориентацией текста (например, для таких языков как арабский или фарси).
+
+- android:theme устанавливает тему приложения. Подробно темы будут рассмотрены далее, а пока достаточно знать, что тема определяет общий стиль приложения. Значение @style/Theme.ViewApp" берет тему "Theme.ViewApp" из каталога res/values/themes
+
+```Xml
+ <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ViewApp">
+        <activity android:name=".MainActivity">
+            <!-- остальное содержимое-->
+        </activity>
+    </application>
+```
+4) Activity Element описывает активность, включая ее имя и фильтр намерений. Элемент intent-filter в MainActivity указывает, как данная activity будет использоваться. В частности, с помощью узла action android:name="android.intent.action.MAIN", что данная activity будет входной точкой в приложение и не должна получать какие-либо данные извне.
+```Xml
+<activity android:name=".MainActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+ 
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
+5) Service Element компоненты, которые позволяют осуществлять фоновую работу, какую-то не визуальную часть работы в системе..
+6) Receiver Element определяет приемник широковещательных сообщений или, по другому, предоставляет доступ к каким-то внутренним данным приложения. Часто через провайдер, например, предоставляют доступ к списку контактов приложения “Контакты”..
+7) Provider Element описывает поставщика контента, который позволяет подписаться на получение каких-то сообщений системы. Или ваше приложение может являться источником таким сообщений. Например, при интеграции пуш-уведомлений в систему, мы указываем Receiver, который будет отлавливать и обрабатывать эти сообщения в своем методе onReceive().
+
+
+```
 **Event** -- ...
 
 **Event Loop** -- ...
